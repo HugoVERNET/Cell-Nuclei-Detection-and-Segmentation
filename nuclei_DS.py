@@ -34,7 +34,7 @@ def process(data_folder, model_name, format):
 		mask_list=sess_interference(model, batch_group)
 		c_mask=patch2image(mask_list, patch_size, stride, shape)
 		c_mask=cv2.medianBlur((255*c_mask).astype(np.uint8), 3)
-		c_mask=c_mask.astype(np.float)/255
+		c_mask=c_mask.astype(np.float32)/255
 		thr=0.5
 		c_mask[c_mask<thr]=0
 		c_mask[c_mask>=thr]=1
